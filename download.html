@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Descargar Saldo</title>
+    
+    <!-- Meta etiquetas para compartir en WhatsApp/Redes -->
+    <meta property="og:title" content="Descarga Saldo · Gestión Personal" />
+    <meta property="og:description" content="Aplicación de escritorio local para controlar tu dinero con claridad y privacidad." />
+    <meta property="og:image" content="assets/win-dashboard.png" />
+    <meta property="og:type" content="website" />
+    <link rel="icon" type="image/png" href="assets/favicon.png" /> <!-- Cambia por tu icono real -->
+
+    <link rel="stylesheet" href="styles.css" />
+    <style>
+      .release-info-card {
+          background: var(--card);
+          border: 1px solid var(--line);
+          border-radius: 14px;
+          padding: 25px;
+          box-shadow: 0 10px 30px #23392e09;
+          max-width: 800px;
+          margin: 0 auto 40px auto;
+          text-align: left;
+      }
+      .release-header-row {
+          display: flex;
+          justify-content: space-between;
+          align-items: baseline;
+          border-bottom: 1px solid var(--line);
+          padding-bottom: 15px;
+          margin-bottom: 20px;
+      }
+      .release-header-row h3 {
+          margin: 0;
+          font-size: 20px;
+          color: var(--green);
+      }
+      .release-date {
+          color: var(--muted);
+          font-size: 13px;
+          font-weight: 600;
+      }
+      .changelog-box {
+          background: var(--paper);
+          border: 1px solid var(--line);
+          border-radius: 8px;
+          padding: 15px;
+          font-size: 13.5px;
+          color: var(--muted);
+          white-space: pre-wrap; 
+          font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+          max-height: 220px;
+          overflow-y: auto;
+          line-height: 1.5;
+      }
+      @media(max-width:600px) {
+          .release-header-row {
+              flex-direction: column;
+              gap: 5px;
+          }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="page-shell">
+      
+      <nav class="topbar">
+        <a class="brand" href="index.html">
+          <span class="brand-mark">S</span>
+          <!-- Flecha de regreso agregada aquí -->
+          <span><strong>Saldo</strong><small>← Volver al inicio</small></span>
+        </a>
+        <div class="nav-links">
+          <a class="button cafecito" href="https://cafecito.app/saldoapp" target="_blank">☕ Invitame un Cafecito</a>
+        </div>
+      </nav>
+
+      <section class="gallery-section" style="margin-top: 20px; border-top: none;">
+        
+        <div class="gallery-header" style="text-align: center; margin-bottom: 40px;">
+            <h2>Descarga Saldo</h2>
+            <p style="margin: 0 auto;">Elige tu plataforma para comenzar a gestionar tu dinero de forma privada.</p>
+        </div>
+
+        <div class="release-info-card">
+            <div class="release-header-row">
+                <h3 id="version-number">Buscando última versión...</h3>
+                <span id="release-date" class="release-date">Consultando fecha...</span>
+            </div>
+            <h4 style="margin: 0 0 10px 0; font-size: 14.5px; color: var(--ink);">Novedades (Changelog):</h4>
+            <div id="changelog-text" class="changelog-box">Conectando con GitHub para obtener los últimos cambios...</div>
+        </div>
+
+        <div class="feature-grid" style="max-width: 800px; margin: 0 auto;">
+            <!-- TARJETA WINDOWS -->
+            <article class="feature" style="text-align: center; padding: 35px 20px;">
+                <span class="feature-icon windows" style="background: #eef5ff; color: #0066cc; margin: 0 auto 15px;">W</span>
+                <h3 style="margin-bottom: 5px;">Windows (PC)</h3>
+                <p style="margin-bottom: 25px; font-size: 13px;">Instalador nativo.<br>Compatible con Windows 10 y 11.</p>
+                <a id="download-win-btn" class="button primary" href="https://github.com/CriissH/s-gestion/releases/latest" target="_blank" style="width: 100%;">Descargar instalador</a>
+                
+                <small style="display: block; margin-top: 15px; color: var(--muted); font-size: 11.5px; line-height: 1.4;">
+                    Lee el aviso de seguridad al final de la página si Windows bloquea la instalación.
+                </small>
+            </article>
+
+            <article class="feature" style="text-align: center; padding: 35px 20px;">
+                <span class="feature-icon android" style="background: #eefce8; color: var(--green); margin: 0 auto 15px;">A</span>
+                <h3 style="margin-bottom: 5px;">Android</h3>
+                <p style="margin-bottom: 25px; font-size: 13px;">Versión en desarrollo.<br>Instalación manual mediante APK.</p>
+                <a class="button secondary" href="#" style="width: 100%; opacity: 0.6; cursor: not-allowed;">Próximamente</a>
+            </article>
+
+            <article class="feature" style="text-align: center; padding: 35px 20px;">
+                <span class="feature-icon linux" style="background: #f0f0f0; color: #333; margin: 0 auto 15px;">L</span>
+                <h3 style="margin-bottom: 5px;">Linux</h3>
+                <p style="margin-bottom: 25px; font-size: 13px;">AppImage / .deb<br>Soporte nativo planeado.</p>
+                <a class="button secondary" href="#" style="width: 100%; opacity: 0.6; cursor: not-allowed;">Próximamente</a>
+            </article>
+
+            <article class="feature" style="text-align: center; padding: 35px 20px;">
+                <span class="feature-icon ios" style="background: #f5f5f7; color: #1d1d1f; margin: 0 auto 15px;">i</span>
+                <h3 style="margin-bottom: 5px;">iOS / macOS</h3>
+                <p style="margin-bottom: 25px; font-size: 13px;">Ecosistema Apple.<br>Soporte en evaluación.</p>
+                <a class="button secondary" href="#" style="width: 100%; opacity: 0.6; cursor: not-allowed;">Próximamente</a>
+            </article>
+
+        </div>
+
+        <!-- AVISO DE SEGURIDAD -->
+        <div style="max-width: 800px; margin: 50px auto 0;">
+            <div style="display: flex; gap: 20px; background: #fff0e2; border: 1px solid #fed2ab; border-radius: 14px; padding: 25px; align-items: flex-start;">
+                <div style="font-size: 32px; line-height: 1;">🛡️</div>
+                <div>
+                    <h3 style="margin: 0 0 10px 0; font-size: 17px; color: var(--ink);">Aviso de seguridad al instalar</h3>
+                    <p style="margin: 0 0 12px 0; color: #6a4a2f; font-size: 14px; line-height: 1.6;">Es posible que <strong>Windows SmartScreen</strong> o <strong>Google Play Protect</strong> muestren una advertencia bloqueando la instalación. Esto ocurre porque Saldo es un proyecto independiente y no cuenta con certificados comerciales de pago para firmar digitalmente los ejecutables.</p>
+                    <p style="margin: 0 0 12px 0; color: #6a4a2f; font-size: 14px; line-height: 1.6;"><strong>Por qué es seguro:</strong> La aplicación está empaquetada para funcionar 100% de forma local, sin enviar tus datos a la nube. El código fuente es público para su auditoría.</p>
+                    <p style="margin: 0; color: #6a4a2f; font-size: 14px; line-height: 1.6;"><strong>Cómo proceder:</strong> En Windows, haz clic en <em>"Más información"</em> y luego en <em>"Ejecutar de todas formas"</em>. En Android, deberás habilitar la <em>"Instalación desde orígenes desconocidos"</em> al abrir el archivo APK.</p>
+                </div>
+            </div>
+        </div>
+
+      </section>
+      
+      <footer>
+        <div class="footer-info">
+            <span>© 2026 Cristian Herrera. Desarrollado a puro café.</span>
+            <a href="mailto:contacto@herreracristian.com.ar" class="footer-email">✉️ contacto@herreracristian.com.ar</a>
+        </div>
+        <div class="footer-links">
+            <a href="https://github.com/CriissH/s-gestion/discussions" target="_blank" rel="noreferrer">Foro y Reportes</a>
+            <a href="https://github.com/CriissH/s-gestion" target="_blank" rel="noreferrer">Código en GitHub</a>
+        </div>
+      </footer>
+    </main>
+
+    <!-- Conexión al archivo JS externo -->
+    <script src="app.js"></script>
+  </body>
+</html>

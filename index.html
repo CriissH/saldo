@@ -6,6 +6,7 @@
     <meta name="description" content="Saldo: aplicación de escritorio para Windows de gestión personal de presupuesto, gastos, ahorro y compras colectivas." />
     <title>Saldo · Controla tu dinero con claridad</title>
     <link rel="stylesheet" href="styles.css" />
+    <link rel="icon" type="image/png" href="assets/favicon.png" />
   </head>
   <body>
     <main class="page-shell">
@@ -18,7 +19,7 @@
         </a>
         <div class="nav-links">
           <a class="nav-text-link" href="https://github.com/CriissH/s-gestion/discussions" target="_blank" rel="noreferrer">Foro (Bugs e Ideas)</a>
-          <a class="nav-text-link" href="https://github.com/CriissH/s-gestion/releases" target="_blank" rel="noreferrer">Descargar para Windows</a>
+          <a class="nav-text-link" href="download.html">Descargar</a>
           <a class="button cafecito" href="https://cafecito.app/saldoapp" target="_blank">☕ Invitame un Cafecito</a>
         </div>
       </nav>
@@ -30,7 +31,7 @@
           <h1>Controla tu dinero <br /><em>con claridad.</em></h1>
           <p class="hero-text">Organiza tus ingresos, registra tus gastos y descubre cuánto dinero realmente tienes disponible. Todo simple, privado y desde un solo lugar.</p>
           <div class="hero-actions">
-            <a class="button primary" href="https://github.com/CriissH/s-gestion/releases" target="_blank">Descargar instalador (.exe) <span>→</span></a>
+            <a class="button primary" href="download.html">Descargar Saldo <span>→</span></a>
             <a class="button secondary" href="#como-funciona">Saber más ↓</a>
           </div>
         </div>
@@ -46,7 +47,7 @@
       </section>
 
       <!-- 3. CÓMO FUNCIONA -->
-      <section id="como-funciona" class="steps-section">
+      <section id="como-funciona" class="steps-section reveal">
         <p class="eyebrow">¿Cómo funciona?</p>
         <h2>Tres pasos para tu tranquilidad financiera</h2>
         <div class="steps-grid">
@@ -69,7 +70,7 @@
       </section>
 
       <!-- 4. CARACTERÍSTICAS PRINCIPALES -->
-      <section class="features-section">
+      <section class="features-section reveal">
         <div class="features-header">
             <p class="eyebrow">Todo lo que necesitas</p>
             <h2>Planifica hoy, ahorra mañana.</h2>
@@ -110,8 +111,109 @@
         </div>
       </section>
 
+      <!-- GALERÍA MULTIPLATAFORMA (CARRUSEL) -->
+      <section class="gallery-section reveal">
+        <div class="gallery-header">
+            <p class="eyebrow">Interfaz multiplataforma</p>
+            <h2>Tu dinero, donde estés.</h2>
+            <p>Desliza para explorar cómo se ve Saldo de forma nativa en tu PC de escritorio y en tu celular Android.</p>
+        </div>
+
+        <div class="carousel-container">
+            <div class="carousel-dots">
+                <span class="dot active" data-index="0"></span>
+                <span class="dot" data-index="1"></span>
+                <span class="dot" data-index="2"></span>
+                <span class="dot" data-index="3"></span>
+                <span class="dot" data-index="4"></span>
+                <span class="dot" data-index="5"></span>
+                <span class="dot" data-index="6"></span>
+            </div>
+
+            <button class="carousel-btn prev" aria-label="Anterior">❮</button>
+            <button class="carousel-btn next" aria-label="Siguiente">❯</button> 
+            <div class="carousel-track">
+                
+                <article class="carousel-slide">
+                    <div class="img-wrapper desktop-mockup">
+                        <img src="assets/win-dashboard.png" alt="Panel principal en Windows" class="gallery-img" />
+                    </div>
+                    <div class="slide-info">
+                        <span class="platform-badge windows">Windows</span>
+                        <p class="gallery-caption">Panel de control y resumen mensual</p>
+                    </div>
+                </article>
+
+                <article class="carousel-slide">
+                    <div class="img-wrapper mobile-mockup">
+                        <img src="assets/and-dashboard.png" alt="Panel principal en Android" class="gallery-img" />
+                    </div>
+                    <div class="slide-info">
+                        <span class="platform-badge android">Android</span>
+                        <p class="gallery-caption">Resumen financiero de bolsillo</p>
+                        <small style="color: var(--muted); font-size: 11px; margin-top: 4px; text-align: center;">Nota: Captura tomada en una versión en desarrollo.</small>
+                    </div>
+                </article>
+
+                <article class="carousel-slide">
+                    <div class="img-wrapper desktop-mockup">
+                        <img src="assets/win-registro.png" alt="Registro de gastos en Windows" class="gallery-img" />
+                    </div>
+                    <div class="slide-info">
+                        <span class="platform-badge windows">Windows</span>
+                        <p class="gallery-caption">Carga rápida de nuevos gastos recurrentes</p>
+                    </div>
+                </article>
+
+                <article class="carousel-slide">
+                    <div class="img-wrapper mobile-mockup">
+                        <img src="assets/and-estadisticas.png" alt="Estadísticas en Android" class="gallery-img" />
+                    </div>
+                    <div class="slide-info">
+                        <span class="platform-badge android">Android</span>
+                        <p class="gallery-caption">Análisis y distribución de gastos</p>
+                        <small style="color: var(--muted); font-size: 11px; margin-top: 4px; text-align: center;">Nota: Captura tomada en una versión en desarrollo.</small>
+                    </div>
+                </article>
+
+                <article class="carousel-slide">
+                    <div class="img-wrapper desktop-mockup">
+                        <img src="assets/win-actualizacion.png" alt="Actualización segura en Windows" class="gallery-img" />
+                    </div>
+                    <div class="slide-info">
+                        <span class="platform-badge windows">Windows</span>
+                        <p class="gallery-caption">Actualizaciones con respaldo de datos obligatorio</p>
+                    </div>
+                </article>
+
+                <article class="carousel-slide">
+                    <div class="img-wrapper mobile-mockup">
+                        <img src="assets/and-grafico.png" alt="Gráfico de consumo en Android" class="gallery-img" />
+                    </div>
+                    <div class="slide-info">
+                        <span class="platform-badge android">Android</span>
+                        <p class="gallery-caption">Visualización interactiva por categoría</p>
+                        <small style="color: var(--muted); font-size: 11px; margin-top: 4px; text-align: center;">Nota: Captura tomada en una versión en desarrollo.</small>
+                    </div>
+                </article>
+
+                <article class="carousel-slide">
+                    <div class="img-wrapper mobile-mockup">
+                        <img src="assets/and-menu.png" alt="Menú de herramientas en Android" class="gallery-img" />
+                    </div>
+                    <div class="slide-info">
+                        <span class="platform-badge android">Android</span>
+                        <p class="gallery-caption">Acceso rápido a todas las herramientas</p>
+                        <small style="color: var(--muted); font-size: 11px; margin-top: 4px; text-align: center;">Nota: Captura tomada en una versión en desarrollo.</small>
+                    </div>
+                </article>
+
+            </div>
+        </div>
+      </section>
+      
       <!-- 5. ROADMAP (LÍNEA DE TIEMPO) -->
-      <section class="roadmap">
+      <section class="roadmap reveal">
         <p class="eyebrow">Roadmap</p>
         <h2>El futuro de Saldo</h2>
         <p class="roadmap-intro">Esta aplicación está en desarrollo activo. Mi objetivo es que crezca con el tiempo sin perder su simplicidad. Esto es lo que se viene:</p>
@@ -149,7 +251,7 @@
       </section>
 
       <!-- 6. SOBRE MÍ -->
-      <section class="about-me">
+      <section class="about-me reveal">
         <h2>Detrás del código</h2>
         <div class="about-content">
             <p>¡Hola! Soy Cristian, el desarrollador detrás de Saldo. Soy estudiante de la Licenciatura en Sistemas de Información y Técnico Superior en Seguridad e Higiene (sí, nada que ver, pero ahí andamos).</p>
@@ -163,7 +265,7 @@
         </div>
       </section>
 
-      <!-- 7. FOOTER (CORREO AGREGADO AQUÍ) -->
+      <!-- 7. FOOTER -->
       <footer>
         <div class="footer-info">
             <span>© 2026 Cristian Herrera. Desarrollado a puro café.</span>
@@ -171,9 +273,10 @@
         </div>
         <div class="footer-links">
             <a href="https://github.com/CriissH/s-gestion/discussions" target="_blank" rel="noreferrer">Foro y Reportes</a>
-            <a href="https://github.com/CriissH/s-gestion" target="_blank" rel="noreferrer">Código en GitHub</a>
+            <a href="https://github.com/CriissH/s-gestion-app" target="_blank" rel="noreferrer">Código en GitHub</a>
         </div>
       </footer>
     </main>
+    <script src="app.js"></script>
   </body>
 </html>
