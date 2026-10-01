@@ -55,6 +55,30 @@
           overflow-y: auto;
           line-height: 1.5;
       }
+      
+      /* ESTILOS DEL BANNER BETA (ADAPTADO PARA ESTAR DENTRO DE LA TARJETA) */
+      .beta-banner {
+          background-color: #fff0e2;
+          border: 1px solid #fed2ab;
+          color: #6a4a2f;
+          padding: 10px 12px;
+          border-radius: 8px;
+          text-align: left;
+          font-size: 11.5px;
+          font-weight: 600;
+          margin: 15px 0;
+          display: flex;
+          align-items: flex-start;
+          gap: 8px;
+          line-height: 1.4;
+      }
+
+      body.dark-mode .beta-banner {
+          background-color: #3c301d;
+          border-color: #66502a;
+          color: #f0c87d;
+      }
+
       @media(max-width:600px) {
           .release-header-row {
               flex-direction: column;
@@ -99,6 +123,7 @@
                 <span class="feature-icon windows" style="background: #eef5ff; color: #0066cc; margin: 0 auto 15px;">W</span>
                 <h3 style="margin-bottom: 5px;">Windows (PC)</h3>
                 <p style="margin-bottom: 25px; font-size: 13px;">Instalador nativo.<br>Compatible con Windows 10 y 11.</p>
+                
                 <a id="download-win-btn" class="button primary" href="https://github.com/CriissH/s-gestion/releases/latest" target="_blank" style="width: 100%;">Descargar instalador</a>
                 
                 <small style="display: block; margin-top: 15px; color: var(--muted); font-size: 11.5px; line-height: 1.4;">
@@ -106,13 +131,22 @@
                 </small>
             </article>
 
+            <!-- TARJETA ANDROID ACTUALIZADA -->
             <article class="feature" style="text-align: center; padding: 35px 20px;">
                 <span class="feature-icon android" style="background: #eefce8; color: var(--green); margin: 0 auto 15px;">A</span>
                 <h3 style="margin-bottom: 5px;">Android</h3>
-                <p style="margin-bottom: 25px; font-size: 13px;">Versión en desarrollo.<br>Instalación manual mediante APK.</p>
-                <a class="button secondary" href="#" style="width: 100%; opacity: 0.6; cursor: not-allowed;">Próximamente</a>
+                <p style="margin-bottom: 25px; font-size: 13px;">Instalación manual (APK).<br>Requiere Android 8.0 o superior.</p>
+                
+                <a class="button primary" href="https://github.com/CriissH/saldo/releases/download/v1.0.18/Saldo_1.0.18_universal-release.apk" style="width: 100%;">Descargar APK</a>
+
+                <!-- AVISO BETA INTEGRADO (ABAJO DEL BOTÓN) -->
+                <div class="beta-banner" style="margin: 15px 0 0 0;">
+                  <span style="font-size: 15px; line-height: 1;">⚠️</span>
+                  <span><strong>BETA:</strong> Versión disponible para pruebas. Puede presentar errores en su interfaz.</span>
+                </div>
             </article>
 
+            <!-- TARJETA LINUX -->
             <article class="feature" style="text-align: center; padding: 35px 20px;">
                 <span class="feature-icon linux" style="background: #f0f0f0; color: #333; margin: 0 auto 15px;">L</span>
                 <h3 style="margin-bottom: 5px;">Linux</h3>
@@ -120,13 +154,13 @@
                 <a class="button secondary" href="#" style="width: 100%; opacity: 0.6; cursor: not-allowed;">Próximamente</a>
             </article>
 
+            <!-- TARJETA IOS/MACOS -->
             <article class="feature" style="text-align: center; padding: 35px 20px;">
                 <span class="feature-icon ios" style="background: #f5f5f7; color: #1d1d1f; margin: 0 auto 15px;">i</span>
                 <h3 style="margin-bottom: 5px;">iOS / macOS</h3>
                 <p style="margin-bottom: 25px; font-size: 13px;">Ecosistema Apple.<br>Soporte en evaluación.</p>
                 <a class="button secondary" href="#" style="width: 100%; opacity: 0.6; cursor: not-allowed;">Próximamente</a>
             </article>
-
         </div>
 
         <!-- AVISO DE SEGURIDAD -->

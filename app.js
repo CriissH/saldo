@@ -41,32 +41,49 @@ document.addEventListener('DOMContentLoaded', () => {
 
         document.getElementById('changelog-text').textContent = data.body || 'Lanzamiento de la versión ' + data.tag_name + ' sin notas de actualización detalladas.';
 
+        // Asignar el enlace de Windows
         const winInstaller = data.assets.find(asset => asset.name.endsWith('.msi') || asset.name.endsWith('.exe'));
         if (winInstaller) {
             const btnWin = document.getElementById('download-win-btn');
-            btnWin.href = winInstaller.browser_download_url;
-            btnWin.target = "_self";
+            if (btnWin) {
+                btnWin.href = winInstaller.browser_download_url;
+                btnWin.target = "_self";
+            }
+        }
+
+        // Asignar el enlace de Android
+        const androidApk = data.assets.find(asset => asset.name.endsWith('.apk'));
+        if (androidApk) {
+            // Usa el ID si existe, sino busca cualquier botón que apunte a un .apk como respaldo
+            const btnAndroid = document.getElementById('download-android-btn') || document.querySelector('a[href*=".apk"]');
+            if (btnAndroid) {
+                btnAndroid.href = androidApk.browser_download_url;
+            }
         }
     }
 
-    // ==========================================
+// ==========================================
     // 2. EFECTO DEL BOTÓN DE DESCARGA A CAFECITO
     // ==========================================
-    const downloadBtn = document.getElementById('download-win-btn');
+    const btnWinDownload = document.getElementById('download-win-btn');
+    const btnAndroidDownload = document.getElementById('download-android-btn') || document.querySelector('a[href*=".apk"]');
     
-    if(downloadBtn) {
-        downloadBtn.addEventListener('click', function() {
-            setTimeout(() => {
-                this.innerHTML = '¡Descargando! ☕ Apoyar en Cafecito';
-                this.style.background = '#fff';
-                this.style.color = 'var(--ink)';
-                this.style.border = '1px solid var(--green)';
-                this.style.boxShadow = '0 4px 12px rgba(0,0,0,0.05)';
-                this.href = 'https://cafecito.app/saldoapp';
-                this.target = '_blank';
-            }, 500);
-        });
-    }
+    // Función reutilizable que cambia el diseño del botón a "Cafecito"
+    const efectoCafecito = function() {
+        setTimeout(() => {
+            this.innerHTML = '¡Descargando! ☕ Apoyar en Cafecito';
+            this.style.background = '#fff';
+            this.style.color = 'var(--ink)';
+            this.style.border = '1px solid var(--green)';
+            this.style.boxShadow = '0 4px 12px rgba(0,0,0,0.05)';
+            this.href = 'https://cafecito.app/saldoapp';
+            this.target = '_blank';
+        }, 500);
+    };
+
+    // Le aplicamos el efecto a ambos botones si existen
+    if(btnWinDownload) btnWinDownload.addEventListener('click', efectoCafecito);
+    if(btnAndroidDownload) btnAndroidDownload.addEventListener('click', efectoCafecito);
 
     // ==========================================
     // 3. LÓGICA DEL CARRUSEL DE IMÁGENES (index.html)

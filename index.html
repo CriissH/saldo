@@ -7,8 +7,77 @@
     <title>Saldo · Controla tu dinero con claridad</title>
     <link rel="stylesheet" href="styles.css" />
     <link rel="icon" type="image/png" href="assets/favicon.png" />
+    <style>
+      /* Estilos para el Banner de Anuncio Global */
+      .global-announcement {
+        background-color: var(--green);
+        color: #ffffff;
+        text-align: center;
+        padding: 12px 20px;
+        font-size: 14px;
+        font-weight: 500;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        box-shadow: 0 4px 12px rgba(23, 123, 85, 0.2);
+        animation: slide-down 0.5s ease-out;
+      }
+
+      .global-announcement a {
+        color: #ffffff;
+        text-decoration: underline;
+        font-weight: 700;
+        margin-left: 5px;
+      }
+
+      .global-announcement a:hover {
+        color: #e5f5ec;
+      }
+
+      .announcement-badge {
+        background-color: #ffffff;
+        color: var(--green);
+        font-size: 11px;
+        font-weight: 800;
+        padding: 3px 8px;
+        border-radius: 20px;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+      }
+
+      @keyframes slide-down {
+        from { transform: translateY(-100%); opacity: 0; }
+        to { transform: translateY(0); opacity: 1; }
+      }
+
+      body.dark-mode .global-announcement {
+        background-color: #173e2d;
+        border-bottom: 1px solid #4cae82;
+      }
+      body.dark-mode .announcement-badge {
+        background-color: #4cae82;
+        color: #ffffff;
+      }
+      
+      @media(max-width:600px) {
+        .global-announcement {
+            flex-direction: column;
+            gap: 6px;
+            padding: 14px 20px;
+            font-size: 13px;
+        }
+      }
+    </style>
   </head>
   <body>
+    <!-- BANNER DE ANUNCIO GLOBAL -->
+    <div class="global-announcement">
+      <span class="announcement-badge">Novedad</span>
+      <span>¡La versión Beta para Android ya está disponible! Pruébala y ayúdanos a mejorar.</span>
+      <a href="download.html">Descargar APK ahora →</a>
+    </div>
+
     <main class="page-shell">
       
       <!-- 1. HEADER -->
