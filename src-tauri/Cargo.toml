@@ -1,6 +1,6 @@
 [package]
 name = "saldo"
-version = "1.0.9"
+version = "1.0.8-C"
 description = "Gestión personal de gastos"
 authors = ["CriissH"]
 edition = "2021"
@@ -16,7 +16,9 @@ tauri-build = { version = "2", features = [] }
 tauri = { version = "2", features = [] }
 tauri-plugin-process = "2"
 tauri-plugin-updater = "2"
+tauri-plugin-notification = "2"
 serde_json = "1"
+tauri-plugin-fs = "2"
 
 [features]
 custom-protocol = ["tauri/custom-protocol"]

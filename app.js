@@ -227,8 +227,15 @@ async function checkForUpdate(showNoUpdate = false, ignoreDismissed = false) {
 function renderDashboard() {
   const expenses = confirmedExpenses(), spent = expenses.reduce((sum, item) => sum + Number(item.amount), 0);
   const remaining = currentIncome() - spent, budget = currentIncome();
-  document.getElementById("remaining-amount").textContent = money(remaining);
+  const projection = monthlyProjectionValue(remaining);
+  document.getElementById("remaining-amount").textContent = compactMoney(remaining);
+  document.getElementById("remaining-exact").textContent = money(remaining);
   document.getElementById("remaining-caption").textContent = budget ? (remaining >= 0 ? "Disponible para el resto del ciclo" : "Has superado tu presupuesto") : "Configura tu ingreso mensual para comenzar";
+  document.getElementById("projection-amount").textContent = compactMoney(projection.value);
+  document.getElementById("projection-exact").textContent = money(projection.value);
+  document.getElementById("projection-caption").textContent = budget
+    ? `Después de ${money(projection.pending)} en recurrentes pendientes`
+    : "Configura tu ingreso mensual para comenzar";
   const notice = document.getElementById("income-notice");
   if (state.incomeNotice) {
     notice.textContent = state.incomeNotice;
@@ -253,7 +260,7 @@ function renderDashboard() {
   let cursor = 0;
   const stops = groups.map(([id, value]) => { const start = cursor; cursor += value / total * 360; return `${getCategory(id).color} ${start}deg ${cursor}deg`; });
   document.getElementById("donut-chart").style.background = groups.length ? `conic-gradient(${stops.join(",")})` : "#e9f1ed";
-  const recent = [...expenses].sort((a, b) => b.date.localeCompare(a.date)).slice(0, 4);
+  const recent = activityMovements().slice(0, 4);
   document.getElementById("recent-empty").style.display = recent.length ? "none" : "block";
   document.getElementById("recent-expenses").innerHTML = recent.map(expenseRow).join("");
 }
@@ -408,9 +415,37 @@ function openRecurringEditor(id) {
   openModal("recurring-edit-modal");
 }
 function groupByCategory(expenses) { return expenses.reduce((groups, item) => { groups[item.categoryId] = (groups[item.categoryId] || 0) + Number(item.amount); return groups; }, {}); }
+function compactMoney(value) {
+  return new Intl.NumberFormat("es-AR", {
+    style: "currency",
+    currency: "ARS",
+    notation: "compact",
+    maximumFractionDigits: 1
+  }).format(Number(value) || 0);
+}
+function monthlyProjectionValue(remaining) {
+  const pending = pendingRecurring()
+    .filter(item => item.frequency === "monthly")
+    .reduce((sum, item) => sum + Number(item.amount || 0), 0);
+  return { value: remaining - pending, pending };
+}
+function activityMovements() {
+  const expenses = state.expenses
+    .filter(item => !item.recurring && item.date)
+    .map(item => ({ ...item, movementType: "expense" }));
+  const incomes = (state.incomeHistory || [])
+    .filter(item => Number(item.amount || 0) !== 0 && item.date)
+    .map(item => ({ ...item, description: item.reason || "Ingreso", movementType: "income" }));
+  return [...expenses, ...incomes].sort((a, b) => {
+    const dateCompare = String(b.date).localeCompare(String(a.date));
+    return dateCompare || (String(b.id || "").localeCompare(String(a.id || "")));
+  });
+}
 function expenseRow(item) {
   const category = getCategory(item.categoryId);
-  return `<div class="expense-row"><div class="expense-avatar" style="background:${category.color}20;color:${category.color}">${category.icon}</div><div class="expense-info"><strong>${escapeHtml(item.description)}</strong><span>${escapeHtml(category.name)} · ${dateFormat(item.date)}</span></div><span class="expense-value">${money(item.amount)}</span></div>`;
+  const isIncome = item.movementType === "income";
+  const detail = isIncome ? "Ingreso · " + dateFormat(item.date) : `${escapeHtml(category.name)} · ${dateFormat(item.date)}`;
+  return `<div class="expense-row ${isIncome ? "income-row" : "expense-movement-row"}"><div class="expense-avatar ${isIncome ? "income-avatar" : ""}" style="background:${isIncome ? "#e5f5ec" : `${category.color}20`};color:${isIncome ? "var(--green)" : category.color}">${isIncome ? "↗" : category.icon}</div><div class="expense-info"><strong>${escapeHtml(item.description)}</strong><span>${detail}</span></div><span class="expense-value ${isIncome ? "income-value" : ""}">${isIncome ? "+" : "−"}${money(Math.abs(Number(item.amount || 0)))}</span></div>`;
 }
 function renderExpenses() {
   const query = (document.getElementById("expense-search")?.value || "").toLowerCase();
